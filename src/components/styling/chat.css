@@ -1,0 +1,13 @@
+.chatOuterContainer {
+  width:100%;
+  display:flex;
+  justify-content: center;
+  margin:0 auto;
+};
+
+.messages {
+  width:100%;
+  background-color: white;
+  height:55vh;
+  margin: 0 auto;
+}

@@ -6,10 +6,20 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
+    "interweave": "^12.7.1",
+    "mime": "^1.6.0",
+    "query-string": "^4.3.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.0"
+    "react-scroll-to-bottom": "^4.1.0",
+    "react-speech-kit": "^3.0.1",
+    "socket.io-client": "^3.1.2",
+    "styled-components": "^5.2.1",
+    "web-vitals": "^1.1.0",
+    "xp.css": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",

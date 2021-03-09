@@ -2,24 +2,24 @@ import React from 'react';
 
 import { SubBody, Userslist } from './styling/style'
 
-const RoomUsers = ({ users }) => {
+const RoomUsers = ({ users, setprivateMsg, setPReceiver }) => {
   return(
-    <SubBody className='roomUsersContainer window'>
-      <div className='title-bar'>
-        <div className='title-bar-text'>Currently chatting here</div>
-      </div>
+      <SubBody className='roomUsersContainer window'>
+        <div className='title-bar'>
+          <div className='title-bar-text'>Currently chatting here</div>
+        </div>
 
-      <div className='window-body'>
-        <Userslist className='usersList'>
-          {users.map(({ name }) => (
-            <li key={name}>
-              {name}
-              <hr />
-            </li>
-          ))}
-        </Userslist>
-      </div>
-    </SubBody>
+        <div className='window-body'>
+          <Userslist className='usersList'>
+            {users.map(({ name }) => (
+              <li key={name} onClick={(e) => setPReceiver(e.target.outerText) }>
+                {name}
+                <hr />
+              </li>
+            ))}
+          </Userslist>
+        </div>
+      </SubBody>
   )
 }
 

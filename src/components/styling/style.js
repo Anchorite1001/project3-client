@@ -18,6 +18,16 @@ export const SubBody = styled.div`
     margin-left:1vw;
   }
 `
+export const JoinBoard = styled.div `
+  {
+    width: 50%;
+    height: 20vh;
+    position: absolute;
+    top: 40vh;
+    left: 23vw;
+  }
+`
+
 export const Messages = styled.div`
   {
     width:90%;
@@ -51,5 +61,26 @@ export const Userslist = styled.ul`
     list-style-type: none;
     padding: 0;
     margin-top: 2vh;
+  }
+`
+
+export const PMwindow = styled.div`
+  {
+    width: 22%;
+    height: 50vh;
+    margin-left: 1vw;
+    margin-top: 15vh;
+  }
+`
+
+export const PMessagesDisplay = styled.div`
+  {
+    width: 90%;
+    display:block;
+    background-color:white;
+    height: 30vh;
+    margin: 1.5vh auto;
+    padding: 0.5vw;
+    font-size: 1rem;
   }
 `

@@ -6,6 +6,7 @@ import ChatHeader from './ChatHeader';
 import MessagesDisplay from './MessagesDisplay';
 import Input from './Input'
 import RoomUsers from './RoomUsers'
+import PrivateMsg from './PrivateMsg'
 
 import { Body } from './styling/style'
 import './styling/chat.css'
@@ -17,11 +18,16 @@ const Chat = ({location}) => {
   const [room, setRoom] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+
   const [users, setUsers] = useState([]);
+  const [PReceiver, setPReceiver] = useState('');
+  const [PMessage, setPMessage] = useState('');
+  const [PMessages, setPMessages] = useState([]);
 
-  const SERVER = 'localhost:5000'
+  const SERVER = 'https://retro-chat-123.herokuapp.com/'
 
-  useEffect(() => { //hook for user joining and leaving the room
+  //hook for user joining
+  useEffect(() => {
     const data = queryString.parse(location.search); //get back the variables in url
     const {name, room} = data //destructuring
 
@@ -41,7 +47,8 @@ const Chat = ({location}) => {
 
   }, [SERVER, location.search]); //useEffect would only be re-rendered when two variables in array change.
 
-  useEffect(() => { //hook for messages and room users handling
+  //hook for handling messages and users of room (subwindow)
+  useEffect(() => {
     socket.on('message', (message) => {
       setMessages([...messages, message]); //push new message to messages array
     });
@@ -49,7 +56,7 @@ const Chat = ({location}) => {
     socket.on('roomUsers', ({ users }) => {
       setUsers(users);
     });
-  }, [messages])
+  }, [messages]) //why messages????
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -60,6 +67,28 @@ const Chat = ({location}) => {
       })
     }
   };
+
+  //hook for private messages
+  useEffect(() => {
+    socket.on('private', (PMessage) => {
+      setPMessages([...PMessages, PMessage]);
+    });
+
+    socket.on('roomUsers', ({ users }) => {
+      setUsers(users);
+    });
+  }, [PMessages]);
+
+  const sendPrivate = (e) => {
+    e.preventDefault();
+
+    if(PReceiver && PMessage) {
+      socket.emit('sendPrivate', { name:PReceiver, room }, PMessage, () => {
+        setPReceiver('');
+        setPMessage('');
+      })
+    }
+  }
 
   return (
     <div className='chatOuterContainer'>
@@ -72,7 +101,8 @@ const Chat = ({location}) => {
           <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
         </div>
       </Body>
-      <RoomUsers users={users}/>
+      <RoomUsers users={users} setPReceiver={setPReceiver}/>
+      <PrivateMsg PReceiver={PReceiver} PMessages={PMessages} name={name} PMessage={PMessage} setPMessage={setPMessage} sendPrivate={sendPrivate} />
     </div>
   )
 }

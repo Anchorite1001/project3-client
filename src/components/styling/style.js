@@ -18,13 +18,38 @@ export const SubBody = styled.div`
     margin-left:1vw;
   }
 `
+export const Messages = styled.div`
+  {
+    width:90%;
+    display:block;
+    background-color: white;
+    height:55vh;
+    margin:3vh auto;
+    padding: 1vw;
+    font-size:1.2rem;
+  }
+`
 
 export const Textarea = styled.textarea`
   {
     display:block;
-    width:80%;
+    width:90%;
     margin:0 auto;
-    height:40vh;
+    height:20vh;
     resize:none;
+    padding: 1vw;
+    margin-bottom: 1vh;
+    font-size:1.2rem;
+  }
+`
+
+export const Userslist = styled.ul`
+  {
+    width: 80%;
+    margin: 0 auto;
+    text-align:center;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 2vh;
   }
 `

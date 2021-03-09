@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './styling/chat.css'
+
 const Message = ({ message: { user, text },name }) => { //user:sender of message; name:current user
   let isSendByCurrentUser = false;
 
@@ -12,19 +14,15 @@ const Message = ({ message: { user, text },name }) => { //user:sender of message
     isSendByCurrentUser
       ? (
         <div className='messageContainer justifyEnd'>
-          <p className='messageSender'>{trimmedName}</p>
-          <div>
-            <p className='messageText'>{text}</p>
-          </div>
+          <p className='messageSenderOther'>{trimmedName}</p>
+          <p className='messageText'>{text}</p>
         </div>
       )
 
       : (
         <div className='messageContainer justifyStart'>
-          <p className='messageSender'>{user}</p>
-          <div>
-            <p className='messageText'>{text}</p>
-          </div>
+          <p className='messageSenderMe'>{user}</p>
+          <p className='messageText'>{text}</p>
         </div>
       )
   )

@@ -28,7 +28,13 @@ const Chat = ({location}) => {
     setName(name);
     setRoom(room);
 
-    socket = io(SERVER);
+    socket = io(SERVER, {
+      withCredentials: true,
+      extraHeaders: {
+        'my-custom-header' : 'abcd'
+      }
+    });
+
     socket.emit('join', { name, room }, (error)=>{
       console.log(error);
     }); //{name, room} === {name:name, room:room}

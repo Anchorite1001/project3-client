@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wallpoet&display=swap');
+
+/* 2 different windows */
 .chatOuterContainer {
   width:100%;
   display:flex;
@@ -5,9 +9,35 @@
   margin:0 auto;
 };
 
-.messages {
-  width:100%;
-  background-color: white;
-  height:55vh;
-  margin: 0 auto;
+/* single message */
+.messageSenderOther, .messageSenderMe, .messageText {
+  font-family: monospace;
+}
+
+.justifyEnd {
+  text-align:right;
+}
+
+.messageSenderOther {
+  color: #F62681
+}
+
+.messageSenderMe {
+  color: blue
+}
+
+.messageSenderMe, .messageSenderOther {
+  font-family: 'Wallpoet', cursive;
+  margin-bottom: 0;
+  text-decoration: underline
+}
+
+.messageText {
+  margin-top: 0;
+}
+
+/* room users window */
+.usersList > li {
+  font-family: 'Wallpoet', cursive;
+  font-size: 1.5rem
 }

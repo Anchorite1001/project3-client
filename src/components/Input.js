@@ -8,7 +8,8 @@ const Input = (props) => {
 
   const {listen, listening, stop} = useSpeechRecognition({
     onResult: (result) => {
-      setMessage(message + ' ' + result);
+      let newMessage = message + ' ' + result;
+      setMessage(newMessage);
     },
   });
 

@@ -1,11 +1,13 @@
 import React from 'react';
-import ScrollToBottom from 'react-scroll-to-bottom';
 
 import Message from './Message'
 
+import './styling/chat.css'
+import { Messages } from './styling/style'
+
 const MessagesDisplay = ({ messages, name }) => {
   return(
-    <ScrollToBottom className='messages'>
+    <Messages className='messagesDisplay'>
       {messages.map((m,i) => {
         return(
           <div key={i}>
@@ -13,7 +15,7 @@ const MessagesDisplay = ({ messages, name }) => {
           </div>
         )
       })}
-    </ScrollToBottom>
+    </Messages>
   )
 }
 

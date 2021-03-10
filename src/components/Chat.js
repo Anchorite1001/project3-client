@@ -31,7 +31,7 @@ const Chat = ({location}) => {
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
 
-  const SERVER = process.env.NODE_ENV;
+  const SERVER = 'https://retro-chat-123.herokuapp.com/';
 
   //hook for user joining
   useEffect(() => {

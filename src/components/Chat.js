@@ -31,7 +31,7 @@ const Chat = ({location}) => {
   const [callAccepted, setCallAccepted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
 
-  const SERVER = 'localhost:5000';
+  const SERVER = 'https://retro-chat-123.herokuapp.com/';
 
   //hook for user joining
   useEffect(() => {
@@ -40,13 +40,16 @@ const Chat = ({location}) => {
 
     setName(name);
     setRoom(room);
-
+    //
     socket = io(SERVER, {
+      transport: ['websocket'],
       withCredentials: true,
       extraHeaders: {
         'my-custom-header' : 'abcd'
       }
     });
+    //
+
 
     socket.emit('join', { name, room }, (error)=>{
       console.log(error);

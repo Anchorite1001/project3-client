@@ -42,7 +42,7 @@ const Chat = ({location}) => {
     setRoom(room);
     //
     socket = io(SERVER, {
-      transport: ['websocket'],
+      transports: ['websocket', 'polling', 'flashsocket'],
       withCredentials: true,
       extraHeaders: {
         'my-custom-header' : 'abcd'

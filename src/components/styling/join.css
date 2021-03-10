@@ -1,10 +1,9 @@
 .field-row-stacked {
   width: 50%;
-  margin: 0 auto;
-  padding: 0.5vh
+  margin: 0.3vh auto;
 }
 
 .signInButton {
   display:block;
-  margin: 0 auto;
+  margin: 0.2vh auto;
 }

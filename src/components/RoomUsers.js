@@ -12,7 +12,7 @@ const RoomUsers = ({ users, setprivateMsg, setPReceiver }) => {
         <div className='window-body'>
           <Userslist className='usersList'>
             {users.map(({ name }) => (
-              <li key={name} onClick={(e) => setPReceiver(e.target.outerText) }>
+              <li key={name} onClick={ (e) => setPReceiver(e.target.outerText) }>
                 {name}
                 <hr />
               </li>

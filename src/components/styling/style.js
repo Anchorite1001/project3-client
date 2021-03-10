@@ -21,9 +21,9 @@ export const SubBody = styled.div`
 export const JoinBoard = styled.div `
   {
     width: 50%;
-    height: 20vh;
+    height: 21vh;
     position: absolute;
-    top: 40vh;
+    top: 35vh;
     left: 23vw;
   }
 `
@@ -67,8 +67,8 @@ export const Userslist = styled.ul`
 export const PMwindow = styled.div`
   {
     width: 22%;
-    height: 50vh;
-    margin-left: 1vw;
+    height: 52vh;
+    margin-left: 5vw;
     margin-top: 15vh;
   }
 `
@@ -82,5 +82,18 @@ export const PMessagesDisplay = styled.div`
     margin: 1.5vh auto;
     padding: 0.5vw;
     font-size: 1rem;
+  }
+`
+
+export const PMessageInput = styled.textarea`
+  {
+    display:block;
+    width: 90%;
+    margin: 0 auto;
+    height: 8vh;
+    resize: none;
+    padding: 0.3vw;
+    margin-bottom: 0.5vh;
+    font-size: 0.8rem;
   }
 `

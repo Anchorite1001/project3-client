@@ -5,7 +5,7 @@ import PMInput from './PMInput'
 
 import { PMwindow } from './styling/style'
 
-const PrivateMsg = ({ PReceiver, PMessage, setPMessage, PMessages, sendPrivate, name }) => {
+const PrivateMsg = ({ PReceiver, setPReceiver, PMessage, setPMessage, PMessages, sendPrivate, name }) => {
   return (
     <PMwindow className='privateMsg window'>
       <div className = 'title-bar'>
@@ -16,7 +16,7 @@ const PrivateMsg = ({ PReceiver, PMessage, setPMessage, PMessages, sendPrivate, 
       </div>
 
       <div className='window-body'>
-        <PMDisplay PMessages={PMessages} name={name} />
+        <PMDisplay PMessages={PMessages} name={name} setPReceiver={setPReceiver}/>
         <PMInput PMessage={PMessage} setPMessage={setPMessage} sendPrivate={sendPrivate}/>
       </div>
     </PMwindow>

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import queryString from 'query-string';
-import io from 'socket.io-client'
+import io from 'socket.io-client';
+import Peer from 'simple-peer';
 
 import ChatHeader from './ChatHeader';
 import MessagesDisplay from './MessagesDisplay';
@@ -24,7 +25,13 @@ const Chat = ({location}) => {
   const [PMessage, setPMessage] = useState('');
   const [PMessages, setPMessages] = useState([]);
 
-  const SERVER = 'https://retro-chat-123.herokuapp.com/'
+  const [stream, setStream] = useState();
+  const [receivingCall, setReceivingCall] = useState(false);
+  const [callerSignal, setCallerSignal] = useState();
+  const [callAccepted, setCallAccepted] = useState(false);
+  const [callEnded, setCallEnded] = useState(false);
+
+  const SERVER = process.env.NODE_ENV;
 
   //hook for user joining
   useEffect(() => {
@@ -84,10 +91,78 @@ const Chat = ({location}) => {
 
     if(PReceiver && PMessage) {
       socket.emit('sendPrivate', { name:PReceiver, room }, PMessage, () => {
-        setPReceiver('');
         setPMessage('');
       })
     }
+  }
+
+  //hook for private video call
+  const myVideo = useRef();
+  const receiverVideo = useRef();
+  const connectionRef = useRef();
+
+  useEffect(() => {
+    navigator.mediaDevices.getUserMedia({video:true, audio:true}).then((stream) => {
+      setStream(stream);
+      myVideo.current.srcObject = stream;
+    });
+
+    socket.on('callUser', ({ signal }) => {
+      setReceivingCall(true);
+      setCallerSignal(signal);
+    });
+
+  },[])
+
+  const sendCall = (e) => {
+    e.preventDefault();
+
+    const peer = new Peer({
+			initiator: true,
+			trickle: false,
+			stream: stream
+		});
+
+    peer.on('signal', (data) => {
+      socket.emit('sendCall', { name:PReceiver, room, signal:data });
+    });
+
+    peer.on('stream', (stream) => {
+      receiverVideo.current.srcObject = stream
+    });
+
+    socket.on('callAccepted', ({ signal }) => {
+      setCallAccepted(true);
+      peer.signal(signal);
+    });
+
+    connectionRef.current = peer;
+  }
+
+  const answerCall = () => {
+    setCallAccepted(true);
+
+    const peer = new Peer({
+			initiator: false,
+			trickle: false,
+			stream: stream
+		});
+
+    peer.on('signal', (data) => {
+      socket.emit('answerCall', { signal:data });
+    });
+
+    peer.on("stream", (stream) => {
+			receiverVideo.current.srcObject = stream
+		});
+
+    peer.signal(callerSignal);
+    connectionRef.current = peer
+  };
+
+  const leaveCall = () => {
+    setCallEnded(true);
+    connectionRef.current.destroy();
   }
 
   return (
@@ -97,12 +172,12 @@ const Chat = ({location}) => {
           <ChatHeader room={room}/>
         </div>
         <div className='window-body'>
-          <MessagesDisplay messages={messages} name={name}/>
+          <MessagesDisplay messages={messages} name={name} setPReceiver={setPReceiver}/>
           <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
         </div>
       </Body>
       <RoomUsers users={users} setPReceiver={setPReceiver}/>
-      <PrivateMsg PReceiver={PReceiver} PMessages={PMessages} name={name} PMessage={PMessage} setPMessage={setPMessage} sendPrivate={sendPrivate} />
+      <PrivateMsg PReceiver={PReceiver} setPReceiver={setPReceiver} PMessages={PMessages} name={name} PMessage={PMessage} setPMessage={setPMessage} sendPrivate={sendPrivate} />
     </div>
   )
 }

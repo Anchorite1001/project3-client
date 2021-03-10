@@ -2,7 +2,7 @@ import React from 'react';
 
 import './styling/chat.css'
 
-const Message = ({ message: { user, text },name }) => { //user:sender of message; name:current user
+const Message = ({ message: { user, text }, name, setPReceiver }) => { //user:sender of message; name:current user
   let isSendByCurrentUser = false;
 
   const trimmedName = name.trim().toLowerCase();//see user controller in server
@@ -14,14 +14,14 @@ const Message = ({ message: { user, text },name }) => { //user:sender of message
     isSendByCurrentUser
       ? (
         <div className='messageContainer justifyEnd'>
-          <p className='messageSenderOther'>{trimmedName}</p>
+          <p className='messageSenderOther'>{name}</p>
           <p className='messageText'>{text}</p>
         </div>
       )
 
       : (
         <div className='messageContainer justifyStart'>
-          <p className='messageSenderMe'>{user}</p>
+          <p className='messageSenderMe' onClick={ (e) => setPReceiver(user) }>{user}</p>
           <p className='messageText'>{text}</p>
         </div>
       )

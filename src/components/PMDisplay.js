@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Message from './Message';
 
 import { PMessagesDisplay } from './styling/style'
 
 const PMDisplay = ( { PMessages, name, setPReceiver } ) => {
+
+  useEffect(() => {
+    let scrollElement = document.getElementsByClassName('PMDisplay')[0];
+    scrollElement.scrollTop = scrollElement.scrollHeight;
+  })
+
   return(
     <PMessagesDisplay className='PMDisplay'>
       {PMessages.map((m,i) => {

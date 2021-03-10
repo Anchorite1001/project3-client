@@ -3,6 +3,11 @@
   margin: 0.3vh auto;
 }
 
+.joinInput {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
 .signInButton {
   display:block;
   margin: 0.2vh auto;

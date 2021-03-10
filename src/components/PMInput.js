@@ -3,12 +3,12 @@ import React from 'react';
 import { PMessageInput } from './styling/style';
 import './styling/chat.css'
 
-const PMInput = ( { PMessage, setPMessage, sendPrivate } ) => {
+const PMInput = ( { PReceiver, PMessage, setPMessage, sendPrivate } ) => {
   return (
     <div className='PMInput'>
       <form className='PMTextForm'>
         <PMessageInput
-          placeholder='Your PM here...'
+          placeholder={PReceiver ? `Send PM to ${PReceiver}` : 'Click a user to send them PM'}
           value={ PMessage }
           onChange={(e) => {
             setPMessage(e.target.value)

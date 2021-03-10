@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactEmoji from 'react-emoji';
 
 import './styling/chat.css'
 
@@ -15,14 +16,14 @@ const Message = ({ message: { user, text }, name, setPReceiver }) => { //user:se
       ? (
         <div className='messageContainer justifyEnd'>
           <p className='messageSenderOther'>{name}</p>
-          <p className='messageText'>{text}</p>
+          <p className='messageText'>{ ReactEmoji.emojify(text) }</p>
         </div>
       )
 
       : (
         <div className='messageContainer justifyStart'>
           <p className='messageSenderMe' onClick={ (e) => setPReceiver(user) }>{user}</p>
-          <p className='messageText'>{text}</p>
+          <p className='messageText'>{ ReactEmoji.emojify(text) }</p>
         </div>
       )
   )

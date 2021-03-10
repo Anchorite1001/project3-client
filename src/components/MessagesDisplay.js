@@ -1,11 +1,17 @@
-import React from 'react';
+import React,{ useEffect } from 'react';
 
 import Message from './Message'
 
-import './styling/chat.css'
 import { Messages } from './styling/style'
+import './styling/chat.css'
 
 const MessagesDisplay = ({ messages, name, setPReceiver }) => {
+
+  useEffect(() => {
+    let scrollElement = document.getElementsByClassName('messagesDisplay')[0];
+    scrollElement.scrollTop = scrollElement.scrollHeight;
+  })
+
   return(
     <Messages className='messagesDisplay'>
       {messages.map((m,i) => {

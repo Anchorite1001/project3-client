@@ -28,7 +28,7 @@ export const JoinBoard = styled.div `
   }
 `
 
-export const Messages = styled.div`
+export const Messages = styled.div `
   {
     width:90%;
     display:block;
@@ -37,6 +37,22 @@ export const Messages = styled.div`
     margin:3vh auto;
     padding: 1vw;
     font-size:1.2rem;
+    overflow: scroll;
+    white-space: nowrap;
+  }
+`
+
+export const PMessagesDisplay = styled.div `
+  {
+    width: 90%;
+    display:block;
+    background-color:white;
+    height: 30vh;
+    margin: 1.5vh auto;
+    padding: 0.5vw;
+    font-size: 1rem;
+    overflow: scroll;
+    white-space: nowrap;
   }
 `
 
@@ -50,6 +66,7 @@ export const Textarea = styled.textarea`
     padding: 1vw;
     margin-bottom: 1vh;
     font-size:1.2rem;
+    letter-spacing: 0.1em;
   }
 `
 
@@ -73,18 +90,6 @@ export const PMwindow = styled.div`
   }
 `
 
-export const PMessagesDisplay = styled.div`
-  {
-    width: 90%;
-    display:block;
-    background-color:white;
-    height: 30vh;
-    margin: 1.5vh auto;
-    padding: 0.5vw;
-    font-size: 1rem;
-  }
-`
-
 export const PMessageInput = styled.textarea`
   {
     display:block;
@@ -95,5 +100,6 @@ export const PMessageInput = styled.textarea`
     padding: 0.3vw;
     margin-bottom: 0.5vh;
     font-size: 0.8rem;
+    letter-spacing: 0.07em;
   }
 `

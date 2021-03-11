@@ -11,7 +11,7 @@ const Join = () => {
   return (
     <JoinBoard className = 'joinContainer window'>
       <div className = 'title-bar'>
-        <div className='title-bar-text'>Join</div>
+        <div className='title-bar-text'>💃Retro-Chat-123: Join</div>
         <div className='title-bar-controls'>
           <button aria-label='Close' />
         </div>
@@ -19,7 +19,7 @@ const Join = () => {
 
       <div className='window-body'>
         <div className='field-row-stacked'>
-          <label>Name</label>
+          <label>Nickname</label>
           <input className='joinInput' type='text' onChange={(e) => setName(e.target.value)}/>
         </div>
 

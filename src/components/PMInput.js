@@ -12,7 +12,8 @@ const PMInput = ( { PReceiver, PMessage, setPMessage, sendPrivate, sendCall } ) 
     'Do you like talking about politics?',
   ]
 
-  const PMrandom = () => {
+  const PMrandom = (e) => {
+    e.preventDefault()
     const PMprompt = PMprompts[Math.floor(Math.random() * (PMprompts.length))];
     setPMessage(PMprompt);
   }
@@ -28,7 +29,7 @@ const PMInput = ( { PReceiver, PMessage, setPMessage, sendPrivate, sendCall } ) 
           }}
         />
         <div className='PMButton'>
-          <button onClick={ PMrandom } className='videoButton'>Random 🎠</button>
+          <button onClick={ (e) => PMrandom(e) } className='videoButton'>Random 🎠</button>
           <button type='submit' onClick={(e) => sendPrivate(e) } >Send 🌐</button>
         </div>
       </form>

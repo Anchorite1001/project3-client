@@ -14,9 +14,14 @@ const Input = (props) => {
     },
   });
 
-  const toggle = listening
-    ? stop
-    : () => listen()
+  const toggle = (e) => {
+    e.preventDefault();
+    if(listening) {
+      stop()
+    } else {
+      listen()
+    }
+  }
 
   const Mprompts = [
     'Do you have existential crisis?',
@@ -26,7 +31,8 @@ const Input = (props) => {
     'What are the other tabs openning in your browser?',
   ]
 
-  const random = () => {
+  const random = (e) => {
+    e.preventDefault();
     const Mprompt = Mprompts[Math.floor(Math.random() * (Mprompts.length))]
     setMessage(Mprompt);
   }
@@ -42,8 +48,8 @@ const Input = (props) => {
           }}
         />
         <div className='inputButtons'>
-          <button onClick={random} className='mRandomButton'>Random 🌀</button>
-          <button onClick={toggle} className='speechButton'>{listening? 'Stop✋' : 'Listen🎙'}</button>
+          <button onClick={(e) => random(e)} className='mRandomButton'>Random 🌀</button>
+          <button onClick={(e) => toggle(e)} className='speechButton'>{listening? 'Stop✋' : 'Listen🎙'}</button>
           <button className='sendButton' type='submit' onClick={ (e) => sendMessage(e) }>Send 🌐</button>
         </div>
       </form>

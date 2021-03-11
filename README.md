@@ -24,6 +24,7 @@ In this chat room application, you can:
 * ExpressJS
 * WebSocket
 * CSS & Styled Components
+* momentJS
 
 ## Wishlist
 * Let speech-to-text feature work after deployment (right now it only works on the local side).
@@ -31,5 +32,5 @@ In this chat room application, you can:
 * Import rich text editor.
 
 ## Acknowledgements
-* CSS template: [xp.css](https://botoxparty.github.io/XP.css/).
-* Font: [Google fonts](https://fonts.google.com/).
+* CSS template: [xp.css](https://botoxparty.github.io/XP.css/)
+* Font: [Google fonts](https://fonts.google.com/)

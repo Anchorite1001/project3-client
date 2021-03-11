@@ -25,10 +25,12 @@ const Input = (props) => {
 
   const Mprompts = [
     'Do you have existential crisis?',
-    'What is the last time you feel you no longer belong?',
     'What is your favourite poem?',
-    'Can you describe what you see out of your window?',
+    'Can you describe what you can see out of your window?',
+    'What is the feeling of speaking a language other than your mother tongue?',
     'What are the other tabs openning in your browser?',
+    'What is your favourite social media app?',
+    'What is your problem? (name one would be enough I think)'
   ]
 
   const random = (e) => {

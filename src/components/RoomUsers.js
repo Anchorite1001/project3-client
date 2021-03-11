@@ -6,7 +6,7 @@ const RoomUsers = ({ users, setprivateMsg, setPReceiver }) => {
   return(
       <SubBody className='roomUsersContainer window'>
         <div className='title-bar'>
-          <div className='title-bar-text'>💬Currently chatting here</div>
+          <div className='title-bar-text'>💬 People in the room</div>
         </div>
 
         <div className='window-body'>

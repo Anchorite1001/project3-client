@@ -15,7 +15,7 @@ import './styling/chat.css'
 
 let socket; //global variable
 
-const Chat = ({location}) => {
+const Chat = ({ location }) => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
   const [message, setMessage] = useState('');
@@ -54,7 +54,7 @@ const Chat = ({location}) => {
       console.log(error);
     }); //{name, room} === {name:name, room:room}
 
-  }, [SERVER, location.search]); //useEffect would only be re-rendered when two variables in array change.
+  }, [SERVER, location.search ]); //useEffect would only be re-rendered when two variables in array change.
 
   //hook for handling messages and users of room (subwindow)
   useEffect(() => {
@@ -171,7 +171,7 @@ const Chat = ({location}) => {
     <div className='chatOuterContainer'>
       <Body className='window'>
         <div className='chatHeader'>
-          <ChatHeader room={room}/>
+          <ChatHeader name={name} room={room}/>
         </div>
         <div className='window-body'>
           <MessagesDisplay messages={messages} name={name} setPReceiver={setPReceiver}/>

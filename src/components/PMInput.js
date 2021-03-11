@@ -5,11 +5,13 @@ import './styling/chat.css'
 
 const PMInput = ( { PReceiver, PMessage, setPMessage, sendPrivate, sendCall } ) => {
   const PMprompts = [
-    'How will you describe homesick with words?',
-    'What is the feeling of speaking a language other than your mother tongue?',
+    'How will you depict homesick with words?',
+    'What is the last time you feel you no longer belong somewhere?',
     'Have you ever felt someone you love so annoying that you wanna silent them?',
     'Do you consider yourself "cultured"?',
-    'Do you like talking about politics?',
+    'How do you feel about discussing politics?',
+    'What is the last time you read something that resonates your subtle and unspeakable feelings?',
+    'What would be a better version of you?'
   ]
 
   const PMrandom = (e) => {

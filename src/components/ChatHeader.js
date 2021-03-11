@@ -4,7 +4,7 @@ const ChatHeader = (props) => {
   return(
     <div className='chatHeader title-bar'>
       <div className='title-bar-text'>
-        📍 {props.room}
+        📍 {props.name} in {props.room}
       </div>
       <div className='title-bar-controls'>
         <a href='/'><button aria-label='Close'/></a>

@@ -20,7 +20,7 @@ const Join = () => {
       <div className='window-body'>
         <div className='field-row-stacked'>
           <label>Nickname</label>
-          <input className='joinInput' type='text' onChange={(e) => setName(e.target.value)}/>
+          <input className='joinInput' type='text' onChange={(e) => setName(e.target.value)} placeholder=''/>
         </div>
 
         <div className='field-row-stacked'>

@@ -9,7 +9,7 @@ Have a try [here](https://retro-chat-123.netlify.app/). Comments and suggestions
 
 In this chat room application, you can:
 
-### `Getting into a chat room`
+### `Setting up & Getting into a chat room`
 
 ### `Have group chats`
 

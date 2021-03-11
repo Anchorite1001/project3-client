@@ -37,8 +37,7 @@ export const Messages = styled.div `
     margin:3vh auto;
     padding: 1vw;
     font-size:1.2rem;
-    overflow: scroll;
-    white-space: nowrap;
+    overflow-y: scroll;
   }
 `
 
@@ -51,8 +50,7 @@ export const PMessagesDisplay = styled.div `
     margin: 1.5vh auto;
     padding: 0.5vw;
     font-size: 1rem;
-    overflow: scroll;
-    white-space: nowrap;
+    overflow-y: scroll;
   }
 `
 
@@ -75,7 +73,7 @@ export const Userslist = styled.ul`
     width: 80%;
     margin: 0 auto;
     text-align:center;
-    list-style-type: none;
+    list-style-type: circle;
     padding: 0;
     margin-top: 2vh;
   }

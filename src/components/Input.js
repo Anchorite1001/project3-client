@@ -42,7 +42,8 @@ const Input = (props) => {
           }}
         />
         <div className='inputButtons'>
-          <button onClick={random} className='speechButton'>Random 🌀</button>
+          <button onClick={random} className='mRandomButton'>Random 🌀</button>
+          <button onClick={toggle} className='speechButton'>{listening? 'Stop✋' : 'Listen🎙'}</button>
           <button className='sendButton' type='submit' onClick={ (e) => sendMessage(e) }>Send 🌐</button>
         </div>
       </form>

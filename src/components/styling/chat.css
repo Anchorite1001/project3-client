@@ -50,6 +50,10 @@
   padding-right: 4vw
 }
 
+.inputButtons > .speechButton {
+  margin-left:1vw;
+}
+
 /* room users window */
 .usersList > li {
   font-family: 'Wallpoet', cursive;

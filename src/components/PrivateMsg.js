@@ -9,7 +9,7 @@ const PrivateMsg = ({ PReceiver, setPReceiver, PMessage, setPMessage, PMessages,
   return (
     <PMwindow className='privateMsg window'>
       <div className = 'title-bar'>
-        <div className='title-bar-text'>PM: {name} & {PReceiver}</div>
+        <div className='title-bar-text'>🍻PM: {name} & {PReceiver}</div>
         <div className='title-bar-controls'>
           <button aria-label='Close' />
         </div>

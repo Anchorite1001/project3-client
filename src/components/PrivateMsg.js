@@ -17,7 +17,7 @@ const PrivateMsg = ({ PReceiver, setPReceiver, PMessage, setPMessage, PMessages,
 
       <div className='window-body'>
         <PMDisplay PMessages={PMessages} name={name} setPReceiver={setPReceiver}/>
-        <PMInput PReceiver={PReceiver} PMessage={PMessage} setPMessage={setPMessage} sendPrivate={sendPrivate}/>
+        <PMInput PReceiver={PReceiver} PMessage={PMessage} setPMessage={setPMessage} sendPrivate={sendPrivate} />
       </div>
     </PMwindow>
   )

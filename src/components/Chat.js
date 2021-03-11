@@ -8,6 +8,7 @@ import MessagesDisplay from './MessagesDisplay';
 import Input from './Input'
 import RoomUsers from './RoomUsers'
 import PrivateMsg from './PrivateMsg'
+import VideoCall from './VideoCall'
 
 import { Body } from './styling/style'
 import './styling/chat.css'
@@ -48,8 +49,6 @@ const Chat = ({location}) => {
         'my-custom-header' : 'abcd'
       }
     });
-    //
-
 
     socket.emit('join', { name, room }, (error)=>{
       console.log(error);
@@ -100,73 +99,73 @@ const Chat = ({location}) => {
   }
 
   //hook for private video call
-  const myVideo = useRef();
-  const receiverVideo = useRef();
-  const connectionRef = useRef();
-
-  useEffect(() => {
-    navigator.mediaDevices.getUserMedia({video:true, audio:true}).then((stream) => {
-      setStream(stream);
-      myVideo.current.srcObject = stream;
-    });
-
-    socket.on('callUser', ({ signal }) => {
-      setReceivingCall(true);
-      setCallerSignal(signal);
-    });
-
-  },[])
-
-  const sendCall = (e) => {
-    e.preventDefault();
-
-    const peer = new Peer({
-			initiator: true,
-			trickle: false,
-			stream: stream
-		});
-
-    peer.on('signal', (data) => {
-      socket.emit('sendCall', { name:PReceiver, room, signal:data });
-    });
-
-    peer.on('stream', (stream) => {
-      receiverVideo.current.srcObject = stream
-    });
-
-    socket.on('callAccepted', ({ signal }) => {
-      setCallAccepted(true);
-      peer.signal(signal);
-    });
-
-    connectionRef.current = peer;
-  }
-
-  const answerCall = () => {
-    setCallAccepted(true);
-
-    const peer = new Peer({
-			initiator: false,
-			trickle: false,
-			stream: stream
-		});
-
-    peer.on('signal', (data) => {
-      socket.emit('answerCall', { signal:data });
-    });
-
-    peer.on("stream", (stream) => {
-			receiverVideo.current.srcObject = stream
-		});
-
-    peer.signal(callerSignal);
-    connectionRef.current = peer
-  };
-
-  const leaveCall = () => {
-    setCallEnded(true);
-    connectionRef.current.destroy();
-  }
+  // const myVideo = useRef();
+  // const receiverVideo = useRef();
+  // const connectionRef = useRef();
+  //
+  // useEffect(() => {
+  //   navigator.mediaDevices.getUserMedia({video:true, audio:true}).then((stream) => {
+  //     setStream(stream)
+  //     myVideo.current.srcObject = stream;
+  //   });
+  //
+  //   socket.on('callUser', ({ signal }) => {
+  //     setReceivingCall(true);
+  //     setCallerSignal(signal);
+  //   });
+  //
+  // },[])
+  //
+  // const sendCall = (e) => {
+  //   e.preventDefault();
+  //
+  //   const peer = new Peer({
+	// 		initiator: true,
+	// 		trickle: false,
+	// 		stream: stream
+	// 	});
+  //
+  //   peer.on('signal', (data) => {
+  //     socket.emit('sendCall', { name:PReceiver, room, signal:data });
+  //   });
+  //
+  //   peer.on('stream', (stream) => {
+  //     receiverVideo.current.srcObject = stream
+  //   });
+  //
+  //   socket.on('callAccepted', ({ signal }) => {
+  //     setCallAccepted(true);
+  //     peer.signal(signal);
+  //   });
+  //
+  //   connectionRef.current = peer;
+  // }
+  //
+  // const answerCall = () => {
+  //   setCallAccepted(true);
+  //
+  //   const peer = new Peer({
+	// 		initiator: false,
+	// 		trickle: false,
+	// 		stream: stream
+	// 	});
+  //
+  //   peer.on('signal', (data) => {
+  //     socket.emit('answerCall', { signal:data });
+  //   });
+  //
+  //   peer.on("stream", (stream) => {
+	// 		receiverVideo.current.srcObject = stream
+	// 	});
+  //
+  //   peer.signal(callerSignal);
+  //   connectionRef.current = peer
+  // };
+  //
+  // const leaveCall = () => {
+  //   setCallEnded(true);
+  //   connectionRef.current.destroy();
+  // }
 
   return (
     <div className='chatOuterContainer'>

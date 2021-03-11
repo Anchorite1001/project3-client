@@ -11,7 +11,7 @@
 
 /* single message */
 .messageSenderOther, .messageSenderMe, .messageText {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Josefin Sans', 'Inter';
 }
 
 .justifyEnd {
@@ -30,6 +30,13 @@
   font-family: 'Wallpoet', cursive;
   margin-bottom: 0;
   text-decoration: underline
+}
+
+.messageTime {
+  font-size: 0.7rem;
+  line-height: 0.3;
+  font-family: monospace;
+  color:grey;
 }
 
 .messageText {
